@@ -1,0 +1,2546 @@
+{
+ "source": "https://github.com/VPSDance/ai-proxy-rules",
+ "updated_at": 1795587716,
+ "providers": [
+  {
+   "provider": "adobe-firefly",
+   "name": "Adobe Firefly",
+   "description": "Adobe Firefly image/video generation (Firefly entry only; shared Adobe CDNs not included).",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "firefly.adobe.com",
+       "firefly.adobe.io"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "alibaba-ai",
+   "name": "Alibaba AI",
+   "description": "Alibaba Cloud Model Studio, DashScope, Qwen, and Qoder China services.",
+   "scope": "cn",
+   "categories": [
+    "coding",
+    "model"
+   ],
+   "aliases": [
+    "bailian",
+    "dashscope",
+    "qoder-cn",
+    "qwen",
+    "tongyi"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domain": [
+       "bailian.console.aliyun.com",
+       "dashscope.aliyuncs.com",
+       "qodercn-jb.oss-cn-hangzhou.aliyuncs.com"
+      ],
+      "domainSuffix": [
+       "qianwen.aliyun.com",
+       "qianwen.com",
+       "qoder.cn",
+       "qoder.com.cn",
+       "qwen.ai",
+       "qwenlm.ai",
+       "tongyi.aliyun.com",
+       "tongyi.com"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "provider": "amazon-q",
+   "name": "Amazon Q Developer",
+   "description": "Amazon Q Developer IDE assistant and coding services.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [
+    "q-developer"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domain": [
+       "aws-language-servers.us-east-1.amazonaws.com",
+       "aws-toolkit-language-servers.amazonaws.com",
+       "client-telemetry.us-east-1.amazonaws.com",
+       "codewhisperer.us-east-1.amazonaws.com",
+       "cognito-identity.us-east-1.amazonaws.com",
+       "idetoolkits-hostedfiles.amazonaws.com",
+       "idetoolkits.amazonwebservices.com",
+       "q-developer-integration.us-east-1.api.aws"
+      ],
+      "domainSuffix": [
+       "aws.dev",
+       "awsapps.com",
+       "awsstatic.com",
+       "console.aws.a2z.com",
+       "q.eu-central-1.amazonaws.com",
+       "q.us-east-1.amazonaws.com",
+       "sso.amazonaws.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "anthropic",
+   "name": "Anthropic",
+   "description": "Anthropic and Claude services.",
+   "categories": [
+    "coding",
+    "model"
+   ],
+   "aliases": [
+    "claude",
+    "claude-code"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "anthropic.com",
+       "anthropic.com.cn",
+       "antspace.dev",
+       "clau.de",
+       "claude.ai",
+       "claude.app",
+       "claude.com",
+       "claude.new",
+       "claude.site",
+       "claudemcpclient.com",
+       "claudemcpcontent.com",
+       "claudepages.dev",
+       "claudestudio.com",
+       "claudeusercontent.com",
+       "modelcontextprotocol.com",
+       "modelcontextprotocol.io",
+       "modelcontextprotocol.net",
+       "modelcontextprotocol.org"
+      ],
+      "processName": [
+       "Claude",
+       "Claude.exe",
+       "claude",
+       "claude.exe",
+       "cowork-svc.exe"
+      ]
+     }
+    },
+    {
+     "name": "Network",
+     "rules": {
+      "ipCidr": [
+       "160.79.104.0/21"
+      ],
+      "ipCidr6": [
+       "2607:6bc0::/32"
+      ],
+      "asn": [
+       399358
+      ]
+     }
+    },
+    {
+     "name": "Third-Party",
+     "rules": {
+      "domain": [
+       "anthropic-com.ghost.io",
+       "anthropic.auth0.com",
+       "anthropic.com.cdn.cloudflare.net",
+       "browser-intake-us5-datadoghq.com",
+       "cdn.growthbook.io",
+       "cdn.usefathom.com",
+       "servd-anthropic-website.b-cdn.net",
+       "storage.googleapis.com"
+      ],
+      "domainSuffix": [
+       "ant.dev",
+       "anthropic.team",
+       "chatbotclaude.com",
+       "claude.dev",
+       "claudeacademy.com",
+       "intercom.io",
+       "intercomcdn.com",
+       "interface.feedback",
+       "lcicat.org",
+       "lcicollections.org",
+       "mcpservertest.online",
+       "muthos.com",
+       "sentry.io",
+       "sillylittleguy.org",
+       "statsigapi.net"
+      ],
+      "domainKeyword": [
+       "datadog",
+       "sentry",
+       "sift"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "augment-code",
+   "name": "Augment Code",
+   "description": "Augment Code IDE extension, Auggie CLI, and coding agent services.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [
+    "augment",
+    "auggie"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "augmentcode.com"
+      ],
+      "processName": [
+       "Augment",
+       "Augment.exe",
+       "augment"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "baidu-ai",
+   "name": "Baidu AI",
+   "description": "Baidu Qianfan and ERNIE AI platform services.",
+   "scope": "cn",
+   "categories": [
+    "model"
+   ],
+   "aliases": [
+    "qianfan",
+    "ernie",
+    "wenxin"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domain": [
+       "ernie.baidu.com",
+       "qianfan.baidubce.com",
+       "yiyan.baidu.com"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "provider": "black-forest-labs",
+   "name": "Black Forest Labs",
+   "description": "Black Forest Labs / FLUX image generation.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [
+    "flux"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "bfl.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "bolt",
+   "name": "Bolt.new",
+   "description": "StackBlitz Bolt.new (AI app builder).",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "bolt.new"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "bytedance-ai",
+   "name": "ByteDance AI",
+   "description": "ByteDance AI products overseas (Trae, Coze, MarsCode, Cici).",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [
+    "trae",
+    "coze",
+    "marscode",
+    "cici"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "abtestvm-sg.bytedance.com",
+       "bytegate-sg.byteintlapi.com",
+       "byteoversea.com",
+       "cici.com",
+       "ciciai.com",
+       "ciciaicdn.com",
+       "coze.com",
+       "lf3-static.bytednsdoc.com",
+       "marscode.com",
+       "sf16-short-sg.bytedapm.com",
+       "starling.zijieapi.com",
+       "trae-api-sg.mchost.guru",
+       "trae.ai",
+       "tron-sg.bytelemon.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "bytedance-ai-cn",
+   "name": "ByteDance AI (China)",
+   "description": "ByteDance AI products for mainland China (Trae, MarsCode, and Coze).",
+   "scope": "cn",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [
+    "trae-cn",
+    "coze-cn",
+    "marscode-cn"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "coze.cn",
+       "cozeapp.net",
+       "cozebaas.cn",
+       "cozebuild.com",
+       "cozecdn.com",
+       "cozedeploy.com",
+       "cozefn.cn",
+       "cozeide.cn",
+       "cozesdk.com",
+       "doudou.com",
+       "marscode.cn",
+       "marscode.com.cn",
+       "mcbaas.work",
+       "mcdemo.show",
+       "mchost.guru",
+       "mcprev.cn",
+       "tcwqqdy.guru",
+       "trae.cn",
+       "trae.com.cn",
+       "trae.guru",
+       "yoma.cn"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "provider": "cerebras",
+   "name": "Cerebras",
+   "description": "Cerebras AI inference services.",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "cerebras.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "character-ai",
+   "name": "Character.AI",
+   "description": "Character.AI roleplay chat.",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "character.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "chutes",
+   "name": "Chutes",
+   "description": "Chutes serverless AI compute and inference platform.",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "chutes.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "civitai",
+   "name": "Civitai",
+   "description": "Civitai (open image model hub).",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "civitai.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "cline",
+   "name": "Cline",
+   "description": "Cline coding agent, API, and cloud services.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "cline.bot"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "clipdrop",
+   "name": "ClipDrop",
+   "description": "ClipDrop (Stability AI image editing tools).",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "clipdrop.co"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "cloudflare-ai",
+   "name": "Cloudflare AI",
+   "description": "Cloudflare AI Gateway and Workers AI services.",
+   "categories": [
+    "model"
+   ],
+   "aliases": [
+    "workers-ai",
+    "ai-gateway"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domain": [
+       "api.cloudflare.com"
+      ],
+      "domainSuffix": [
+       "ai.cloudflare.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "coderabbit",
+   "name": "CodeRabbit",
+   "description": "CodeRabbit AI code review.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "coderabbit.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "cohere",
+   "name": "Cohere",
+   "description": "Cohere AI services.",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "cohere.ai",
+       "cohere.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "comfyui",
+   "name": "ComfyUI",
+   "description": "ComfyUI image generation workflow.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "comfy.org",
+       "comfyregistry.org"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "command-code",
+   "name": "Command Code",
+   "description": "Command Code AI coding agent, desktop app, CLI, and hosted model API.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [
+    "commandcode"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "commandcode.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "continue",
+   "name": "Continue",
+   "description": "Continue (open-source AI coding assistant).",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "continue.dev"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "copilot",
+   "name": "Copilot",
+   "description": "Microsoft Copilot and related services.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [
+    "github-copilot",
+    "microsoft-copilot"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domain": [
+       "location.microsoft.com",
+       "odc.officeapps.live.com"
+      ],
+      "domainSuffix": [
+       "copilot.microsoft.com",
+       "githubcopilot.com"
+      ]
+     }
+    },
+    {
+     "name": "Network",
+     "rules": {}
+    },
+    {
+     "name": "Third-Party",
+     "rules": {
+      "domain": [
+       "api.msn.com",
+       "api.statsig.com",
+       "assets.msn.com",
+       "browser-intake-datadoghq.com",
+       "copilot-proxy.githubusercontent.com",
+       "copilot-workspace.githubnext.com",
+       "copilotprodattachments.blob.core.windows.net",
+       "gateway.bingviz.microsoft.net",
+       "gateway.bingviz.microsoftapp.net",
+       "in.appcenter.ms",
+       "production-copilot-host-westus.webpubsub.azure.com",
+       "self.events.data.microsoft.com",
+       "static.cloudflareinsights.com",
+       "sydney.bing.com"
+      ],
+      "domainSuffix": [
+       "algolia.net",
+       "api.microsoftapp.net",
+       "auth0.com",
+       "bing-shopping.microsoft-falcon.io",
+       "challenges.cloudflare.com",
+       "client-api.arkoselabs.com",
+       "edgeservices.bing.com",
+       "events.statsigapi.net",
+       "featuregates.org",
+       "identrust.com",
+       "intercom.io",
+       "intercomcdn.com",
+       "launchdarkly.com",
+       "observeit.net",
+       "segment.io",
+       "sentry.io",
+       "stripe.com"
+      ],
+      "asn": [
+       14061
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "crewai",
+   "name": "CrewAI",
+   "description": "CrewAI multi-agent framework.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "crewai.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "cursor",
+   "name": "Cursor",
+   "description": "Cursor AI code editor.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "cursor-cdn.com",
+       "cursor.com",
+       "cursor.sh",
+       "cursorapi.com",
+       "cursorvm.com"
+      ],
+      "processName": [
+       "Cursor",
+       "Cursor.exe",
+       "cursor"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "deepinfra",
+   "name": "DeepInfra",
+   "description": "DeepInfra AI inference services.",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "deepinfra.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "deepseek",
+   "name": "DeepSeek",
+   "description": "DeepSeek web and API services.",
+   "scope": "cn",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "deepseek.com",
+       "deepseeksvc.com"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "provider": "descript",
+   "name": "Descript",
+   "description": "Descript AI audio / video editor.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "descript.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "devin",
+   "name": "Devin",
+   "description": "Cognition Devin (autonomous coding agent).",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "devin.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "dia-browser",
+   "name": "Dia Browser",
+   "description": "The Browser Company Dia (AI-first browser).",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "diabrowser.com",
+       "diabrowser.engineering"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "dify",
+   "name": "Dify",
+   "description": "Dify LLM application development platform.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "dify.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "duck-ai",
+   "name": "DuckDuckGo AI",
+   "description": "DuckDuckGo AI Chat (anonymous LLM chat).",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "duck.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "eigent",
+   "name": "Eigent",
+   "description": "Eigent multi-agent workforce desktop application.",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "eigent.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "elevenlabs",
+   "name": "ElevenLabs",
+   "description": "ElevenLabs voice AI services.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [
+    "eleven-labs"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "elevenlabs.com",
+       "elevenlabs.io",
+       "elevenlabsusercontent.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "factory",
+   "name": "Factory",
+   "description": "Factory AI software development agents and coding services.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "factory.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "fireworks-ai",
+   "name": "Fireworks AI",
+   "description": "Fireworks AI inference and developer services.",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "fireworks.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "gamma",
+   "name": "Gamma",
+   "description": "Gamma AI presentation / slides.",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "gamma.app"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "genspark",
+   "name": "Genspark",
+   "description": "Genspark AI search / agent.",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "genspark.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "google-ai",
+   "name": "Google AI",
+   "description": "Google AI product family (Gemini, AI Studio, NotebookLM, Labs, DeepMind, etc.).",
+   "categories": [
+    "coding",
+    "model"
+   ],
+   "aliases": [
+    "gemini",
+    "ai-studio",
+    "notebooklm",
+    "antigravity"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "ai.google.dev",
+       "ai.studio",
+       "aistudio.google.com",
+       "antigravity.google",
+       "antigravity.google.com",
+       "bard.google.com",
+       "deepmind.com",
+       "deepmind.google",
+       "gemini.google",
+       "gemini.google.com",
+       "generativeai.google",
+       "generativelanguage.googleapis.com",
+       "notebooklm.google",
+       "notebooklm.google.com"
+      ],
+      "processName": [
+       "Antigravity",
+       "Antigravity.exe",
+       "antigravity"
+      ]
+     }
+    },
+    {
+     "name": "Third-Party",
+     "rules": {
+      "domain": [
+       "alkalicore-pa.clients6.google.com",
+       "alkalimakersuite-pa.clients6.google.com",
+       "antigravity-pa.googleapis.com",
+       "antigravity.googleapis.com",
+       "appsgenaiserver-pa.clients.google.com",
+       "appsgenaiserver-pa.clients6.google.com",
+       "appsgenaiserver-pa.googleapis.com",
+       "cloudaicompanion.googleapis.com",
+       "cloudcode-pa.googleapis.com",
+       "daily-cloudcode-pa.googleapis.com",
+       "geminiweb-pa.clients.google.com",
+       "geminiweb-pa.clients6.google.com",
+       "notebooklm-pa.googleapis.com",
+       "notebooklm.googleapis.com",
+       "webchannel-alkalimakersuite-pa.clients6.google.com"
+      ],
+      "domainSuffix": [
+       "aicode.googleapis.com",
+       "aida.googleapis.com",
+       "aisandbox-pa.googleapis.com",
+       "antigravity-unleash.goog",
+       "flow.google",
+       "flow.google.com",
+       "geller-pa.googleapis.com",
+       "gemini.gstatic.com",
+       "gemma.ai",
+       "jules.google",
+       "jules.google.com",
+       "labs.google",
+       "labs.google.com",
+       "labstailwind.pa.googleapis.com",
+       "makersuite.google.com",
+       "notebook.google",
+       "notebook.google.com",
+       "opal.google",
+       "opal.google.com",
+       "proactivebackend-pa.googleapis.com",
+       "robinfrontend-pa.googleapis.com",
+       "stitch.withgoogle.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "grammarly",
+   "name": "Grammarly",
+   "description": "Grammarly AI writing assistant.",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "grammarly.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "groq",
+   "name": "Groq",
+   "description": "Groq AI inference services.",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "groq.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "h2o-ai",
+   "name": "H2O.ai",
+   "description": "H2O.ai (open-source ML / LLM platform).",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "h2o.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "hermes-agent",
+   "name": "Hermes Agent",
+   "description": "Hermes Agent autonomous AI agent by Nous Research.",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "hermes-agent.nousresearch.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "heygen",
+   "name": "HeyGen",
+   "description": "HeyGen AI avatar video generation.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "heygen.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "huggingface",
+   "name": "Hugging Face",
+   "description": "Hugging Face model hub, spaces, and inference services.",
+   "categories": [
+    "model"
+   ],
+   "aliases": [
+    "hugging-face"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "hf.co",
+       "hf.space",
+       "huggingface.co"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "ideogram",
+   "name": "Ideogram",
+   "description": "Ideogram AI image generation.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "ideogram.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "inflection",
+   "name": "Inflection / Pi",
+   "description": "Inflection AI (Pi personal chat).",
+   "categories": [],
+   "aliases": [
+    "pi"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "inflection.ai",
+       "pi.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "jasper",
+   "name": "Jasper",
+   "description": "Jasper AI marketing / writing assistant.",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "jasper.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "jetbrains-ai",
+   "name": "JetBrains AI",
+   "description": "JetBrains AI Assistant / Junie / Grazie.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [
+    "grazie",
+    "junie"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "grazie.ai",
+       "grazie.aws.intellij.net",
+       "jetbrains.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "kilo",
+   "name": "Kilo",
+   "description": "Kilo coding agent and cloud engineering platform.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [
+    "kilo-code"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "kilo.ai",
+       "kilo.codes"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "kiro",
+   "name": "Kiro",
+   "description": "AWS Kiro agentic IDE and CLI services.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "kiro.dev",
+       "q.eu-central-1.amazonaws.com",
+       "q.us-east-1.amazonaws.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "langchain",
+   "name": "LangChain",
+   "description": "LangChain (LangSmith / LangGraph).",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "langchain.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "leonardo-ai",
+   "name": "Leonardo AI",
+   "description": "Leonardo AI image generation.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "leonardo.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "lmstudio",
+   "name": "LM Studio",
+   "description": "LM Studio (desktop UI for local LLMs).",
+   "categories": [
+    "model"
+   ],
+   "aliases": [
+    "lm-studio"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "lmstudio.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "lmarena",
+   "name": "LMArena",
+   "description": "LMArena model evaluation and chat services.",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "lmarena.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "lovable",
+   "name": "Lovable",
+   "description": "Lovable AI app builder.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "lovable.dev"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "lovart",
+   "name": "Lovart",
+   "description": "Lovart AI image generation.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "lovart.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "luma-ai",
+   "name": "Luma AI",
+   "description": "Luma AI (Dream Machine video, Genie 3D).",
+   "categories": [
+    "media"
+   ],
+   "aliases": [
+    "dream-machine"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "lumalabs.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "manus",
+   "name": "Manus",
+   "description": "Manus AI agent services.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "manus.im",
+       "manuscdn.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "meta-ai",
+   "name": "Meta AI",
+   "description": "Meta AI products (Meta AI chat, Llama).",
+   "categories": [],
+   "aliases": [
+    "llama"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domain": [
+       "ai.developer.meta.com",
+       "ai.meta.com",
+       "aidemos.meta.com",
+       "developer.meta.com",
+       "llama.developer.meta.com"
+      ],
+      "domainSuffix": [
+       "atmeta.com",
+       "llama.com",
+       "llamameta.net",
+       "meta.ai",
+       "metaaiusercontent.com",
+       "metaaivm.com",
+       "muse.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "midjourney",
+   "name": "Midjourney",
+   "description": "Midjourney AI image generation.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "midjourney.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "minimax",
+   "name": "MiniMax",
+   "description": "MiniMax API services.",
+   "scope": "cn",
+   "categories": [
+    "model",
+    "media"
+   ],
+   "aliases": [
+    "hailuo"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domain": [
+       "api.minimax.io",
+       "api.minimaxi.com"
+      ],
+      "domainSuffix": [
+       "hailuoai.com",
+       "xingyeai.com"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "provider": "mistral-ai",
+   "name": "Mistral AI",
+   "description": "Mistral AI (Le Chat, La Plateforme).",
+   "categories": [
+    "model"
+   ],
+   "aliases": [
+    "le-chat"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "mistral.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "modelscope",
+   "name": "ModelScope",
+   "description": "ModelScope model community and inference API services.",
+   "scope": "cn",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "modelscope.cn",
+       "modelscope.com"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "provider": "moonshot-ai",
+   "name": "Moonshot AI",
+   "description": "Moonshot AI and Kimi web and API services.",
+   "scope": "cn",
+   "categories": [
+    "model"
+   ],
+   "aliases": [
+    "kimi",
+    "moonshot"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "kimi.com",
+       "moonshot.ai",
+       "moonshot.cn"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "provider": "novita-ai",
+   "name": "Novita AI",
+   "description": "Novita AI model APIs, GPU cloud, and agent sandbox services.",
+   "categories": [
+    "model"
+   ],
+   "aliases": [
+    "novita"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "novita.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "ollama",
+   "name": "Ollama",
+   "description": "Ollama (run open-source LLMs locally).",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "ollama.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "openai",
+   "name": "OpenAI",
+   "description": "OpenAI and ChatGPT services.",
+   "categories": [
+    "coding",
+    "model"
+   ],
+   "aliases": [
+    "chatgpt",
+    "codex"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "ai.com",
+       "chat.com",
+       "chatgpt.com",
+       "chatgpt.livekit.cloud",
+       "crixet.com",
+       "oaistatic.com",
+       "oaiusercontent.com",
+       "openai.com",
+       "openaiapi-site.azureedge.net",
+       "openaicom.imgix.net",
+       "sora.com"
+      ],
+      "domainKeyword": [
+       "chatgpt-async-webps-prod",
+       "openai"
+      ],
+      "processName": [
+       "ChatGPT",
+       "ChatGPT.exe",
+       "Codex",
+       "Codex.exe",
+       "chatgpt",
+       "codex"
+      ]
+     }
+    },
+    {
+     "name": "Network",
+     "rules": {
+      "ipCidr": [
+       "199.47.142.0/23",
+       "24.199.123.28/32",
+       "64.23.132.171/32"
+      ],
+      "ipCidr6": [
+       "2604:f20::/32"
+      ],
+      "asn": [
+       401518
+      ]
+     }
+    },
+    {
+     "name": "Third-Party",
+     "rules": {
+      "domain": [
+       "browser-intake-datadoghq.com",
+       "openai-api.arkoselabs.com",
+       "openaiassets.blob.core.windows.net",
+       "openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net",
+       "openaicomproductionae4b.blob.core.windows.net",
+       "production-openaicom-storage.azureedge.net",
+       "static.cloudflareinsights.com"
+      ],
+      "domainSuffix": [
+       "algolia.net",
+       "api.statsig.com",
+       "auth0.com",
+       "chatgpt.site",
+       "client-api.arkoselabs.com",
+       "events.statsigapi.net",
+       "featuregates.org",
+       "host.livekit.cloud",
+       "identrust.com",
+       "intercom.io",
+       "intercomcdn.com",
+       "launchdarkly.com",
+       "oaistatsig.com",
+       "observeit.net",
+       "openai.com.cdn.cloudflare.net",
+       "openai.org",
+       "segment.io",
+       "sentry.io",
+       "statsigapi.net",
+       "stripe.com",
+       "turn.livekit.cloud"
+      ],
+      "domainRegex": [
+       "^chatgpt-async-webps-prod-\\S+-\\d+\\.webpubsub\\.azure\\.com$"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "openart",
+   "name": "OpenArt",
+   "description": "OpenArt AI image generation.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "openart.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "openclaw",
+   "name": "OpenClaw",
+   "description": "OpenClaw open-source personal AI assistant.",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "openclaw.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "opencode",
+   "name": "OpenCode",
+   "description": "OpenCode coding agent and Zen hosted model services.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "opencode.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "openrouter",
+   "name": "OpenRouter",
+   "description": "OpenRouter AI model routing services.",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "openrouter.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "otter-ai",
+   "name": "Otter.ai",
+   "description": "Otter.ai meeting transcription.",
+   "categories": [],
+   "aliases": [
+    "otter"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "otter.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "perplexity",
+   "name": "Perplexity",
+   "description": "Perplexity AI search.",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domain": [
+       "ppl-ai-file-upload.s3.amazonaws.com",
+       "pplx-res.cloudinary.com"
+      ],
+      "domainSuffix": [
+       "perplexity.ai",
+       "perplexity.com",
+       "pplx.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "phind",
+   "name": "Phind",
+   "description": "Phind AI search for developers.",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "phind.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "pika",
+   "name": "Pika",
+   "description": "Pika AI video generation.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "pika.art"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "poe",
+   "name": "Poe",
+   "description": "Poe AI chat.",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "poe.com",
+       "poecdn.net"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "ppio",
+   "name": "PPIO",
+   "description": "PPIO model APIs and GPU cloud services.",
+   "scope": "cn",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "ppio.cn",
+       "ppio.com"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "provider": "qoder",
+   "name": "Qoder",
+   "description": "Qoder international AI coding IDE and agent services.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "qoder.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "recraft",
+   "name": "Recraft",
+   "description": "Recraft AI image / vector generation.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "recraft.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "replicate",
+   "name": "Replicate",
+   "description": "Replicate model hosting, inference, and output delivery services.",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "replicate.com",
+       "replicate.delivery"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "replit",
+   "name": "Replit",
+   "description": "Replit AI Agent, Assistant, workspace, and app deployment services.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "repl.co",
+       "repl.it",
+       "replit.app",
+       "replit.com",
+       "replit.dev"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "runway",
+   "name": "Runway",
+   "description": "Runway AI video generation.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "runway.com",
+       "runwayml.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "siliconflow",
+   "name": "SiliconFlow",
+   "description": "SiliconFlow model APIs and inference platform services.",
+   "scope": "cn",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "siliconflow.cn",
+       "siliconflow.com"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "provider": "sourcegraph",
+   "name": "Sourcegraph",
+   "description": "Sourcegraph Cody and Amp AI coding services.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [
+    "cody",
+    "amp"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "ampcode.com",
+       "ampworkers.com",
+       "cody.dev",
+       "sourcegraph.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "stability-ai",
+   "name": "Stability AI",
+   "description": "Stability AI (Stable Diffusion).",
+   "categories": [
+    "media"
+   ],
+   "aliases": [
+    "stable-diffusion"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "stability.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "stepfun",
+   "name": "StepFun",
+   "description": "StepFun web and model API services.",
+   "scope": "cn",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "stepfun.ai",
+       "stepfun.com"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "provider": "suno",
+   "name": "Suno",
+   "description": "Suno AI music generation.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "suno.ai",
+       "suno.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "synthesia",
+   "name": "Synthesia",
+   "description": "Synthesia AI video avatar generation.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "synthesia.io"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "tabnine",
+   "name": "Tabnine",
+   "description": "Tabnine AI coding assistant and agent services.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "tabnine.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "tencent-ai",
+   "name": "Tencent AI",
+   "description": "Tencent Hunyuan, Yuanbao, and Yuanqi AI services.",
+   "scope": "cn",
+   "categories": [
+    "model",
+    "media"
+   ],
+   "aliases": [
+    "hunyuan",
+    "yuanbao",
+    "yuanqi"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domain": [
+       "api.hunyuan.cloud.tencent.com",
+       "hunyuan.tencentcloudapi.com"
+      ],
+      "domainSuffix": [
+       "hunyuan.tencent.com",
+       "yuanbao.tencent.com",
+       "yuanqi.tencent.com"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "provider": "together-ai",
+   "name": "Together AI",
+   "description": "Together AI inference and developer services.",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "together.ai",
+       "together.xyz"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "udio",
+   "name": "Udio",
+   "description": "Udio AI music generation.",
+   "categories": [
+    "media"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "udio.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "v0",
+   "name": "v0",
+   "description": "Vercel v0 (UI generation).",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [
+    "vercel-v0"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "v0.app",
+       "v0.dev"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "volcengine-ai",
+   "name": "Volcengine AI",
+   "description": "Volcengine Ark and Doubao AI platform services.",
+   "scope": "cn",
+   "categories": [
+    "model"
+   ],
+   "aliases": [
+    "ark",
+    "doubao"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domain": [
+       "ark.cn-beijing.volces.com"
+      ],
+      "domainSuffix": [
+       "doubao.com"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "provider": "windsurf",
+   "name": "Windsurf",
+   "description": "Windsurf (formerly Codeium) AI IDE.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [
+    "codeium"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "codeium.com",
+       "codeiumdata.com",
+       "windsurf.build",
+       "windsurf.com"
+      ],
+      "processName": [
+       "Windsurf",
+       "Windsurf.exe",
+       "windsurf"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "x-ai",
+   "name": "xAI",
+   "description": "xAI and Grok.",
+   "categories": [],
+   "aliases": [
+    "grok"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "grok.com",
+       "grok.x.com",
+       "grokbot.com",
+       "grokipedia.com",
+       "x.ai"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "xiaomi-ai",
+   "name": "Xiaomi AI",
+   "description": "Xiaomi AI and MiMo services.",
+   "scope": "cn",
+   "categories": [
+    "model"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "miaibox.com",
+       "xiaoaiassist.com",
+       "xiaomimimo.com"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "provider": "you",
+   "name": "You.com",
+   "description": "You.com AI search.",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "you.com"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "youmind",
+   "name": "YouMind",
+   "description": "YouMind AI note-taking / knowledge workspace.",
+   "categories": [],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "youmind.ai",
+       "youmind.com",
+       "youmind.site"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "zed",
+   "name": "Zed",
+   "description": "Zed editor and AI coding services.",
+   "categories": [
+    "coding"
+   ],
+   "aliases": [],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "zed.dev"
+      ]
+     }
+    }
+   ],
+   "scope": "global"
+  },
+  {
+   "provider": "zhipu-ai",
+   "name": "Zhipu AI",
+   "description": "Zhipu AI, GLM, and BigModel services.",
+   "scope": "cn",
+   "categories": [
+    "model"
+   ],
+   "aliases": [
+    "glm",
+    "chatglm",
+    "bigmodel"
+   ],
+   "groups": [
+    {
+     "name": "Core",
+     "rules": {
+      "domainSuffix": [
+       "bigmodel.cn",
+       "chatglm.cn",
+       "z.ai",
+       "zhipuai.cn",
+       "zhipucn.com"
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}
