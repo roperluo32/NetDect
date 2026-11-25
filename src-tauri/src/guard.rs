@@ -1020,12 +1020,16 @@ mod tests {
         }
     }
 
+    fn native(p: &str) -> String {
+        p.replace('/', std::path::MAIN_SEPARATOR_STR)
+    }
+
     fn matcher() -> AppMatcher {
         AppMatcher {
             id: "anthropic".into(),
             name: "Anthropic".into(),
             names: ["claude.exe".to_string()].into_iter().collect(),
-            roots: vec![with_sep(r"C:\Program Files\WindowsApps\Claude_1")],
+            roots: vec![with_sep(&native("/Apps/Claude_1"))],
             domains: ["cdn.growthbook.io".to_string()].into_iter().collect(),
             suffixes: vec!["claude.ai".into()],
             keywords: vec!["anthropic".into()],
@@ -1037,8 +1041,8 @@ mod tests {
     fn matching() {
         let m = matcher();
         assert_eq!(m.matches(&conn("Claude.exe", "", "", "")), Some("process"));
-        assert_eq!(m.matches(&conn("x.exe", r"C:\Program Files\WindowsApps\Claude_1\app\x.exe", "", "")), Some("process"));
-        assert_eq!(m.matches(&conn("x.exe", r"C:\Program Files\WindowsApps\Claude_10\x.exe", "", "")), None);
+        assert_eq!(m.matches(&conn("x.exe", &native("/Apps/Claude_1/app/x.exe"), "", "")), Some("process"));
+        assert_eq!(m.matches(&conn("x.exe", &native("/Apps/Claude_10/x.exe"), "", "")), None);
         assert_eq!(m.matches(&conn("chrome.exe", "", "api.claude.ai", "")), Some("domain"));
         assert_eq!(m.matches(&conn("chrome.exe", "", "notclaude.ai", "")), None);
         assert_eq!(m.matches(&conn("chrome.exe", "", "x.anthropic.dev", "")), Some("domain"));
