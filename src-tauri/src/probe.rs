@@ -14,7 +14,8 @@ pub const PROBE_FLAG: &str = "--netdect-probe";
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ChildSpec {
     pub route: Route,
-    pub url: String,
+    /// Echo services tried in order until one returns an IP.
+    pub urls: Vec<String>,
     pub timeout_ms: u64,
 }
 
@@ -22,7 +23,12 @@ pub struct ChildSpec {
 #[serde(tag = "t", rename_all = "lowercase")]
 enum ChildMsg {
     Port { port: u16 },
-    Done { ip: Option<String>, error: Option<String> },
+    Done {
+        ip: Option<String>,
+        error: Option<String>,
+        #[serde(default)]
+        url: Option<String>,
+    },
 }
 
 fn emit(msg: &ChildMsg) {
@@ -35,33 +41,32 @@ fn emit(msg: &ChildMsg) {
 /// Entry point when NetDect runs as a renamed probe copy. Returns the exit code.
 pub fn run_probe_child(spec_json: &str) -> i32 {
     let Ok(spec) = serde_json::from_str::<ChildSpec>(spec_json) else {
-        emit(&ChildMsg::Done { ip: None, error: Some("探针参数无效".into()) });
+        emit(&ChildMsg::Done { ip: None, error: Some("探针参数无效".into()), url: None });
         return 2;
     };
     let Ok(rt) = tokio::runtime::Builder::new_current_thread().enable_all().build() else { return 3 };
     rt.block_on(async {
         let limit = Duration::from_millis(spec.timeout_ms);
-        let Some((host, port, path)) = net::split_https_url(&spec.url) else {
-            emit(&ChildMsg::Done { ip: None, error: Some("回显地址无效".into()) });
-            return;
-        };
-        let opened = match net::open(&spec.route, &host, port, limit).await {
-            Ok(o) => o,
-            Err(e) => return emit(&ChildMsg::Done { ip: None, error: Some(e) }),
-        };
-        emit(&ChildMsg::Port { port: opened.local_port });
-        let result = async {
-            let mut tls = net::tls_handshake(opened.stream, &host, limit).await?;
-            let resp = net::http_get(&mut tls, &host, &path, limit).await?;
-            net::extract_ip(&resp.body).ok_or_else(|| format!("回显服务没有返回 IP（HTTP {}）", resp.status))
+        let mut errors = Vec::new();
+        for url in &spec.urls {
+            match echo_once(&spec.route, url, limit).await {
+                Ok(ip) => return emit(&ChildMsg::Done { ip: Some(ip), error: None, url: Some(url.clone()) }),
+                Err(e) => errors.push(format!("{}: {e}", net::split_https_url(url).map(|(h, _, _)| h).unwrap_or_default())),
+            }
         }
-        .await;
-        match result {
-            Ok(ip) => emit(&ChildMsg::Done { ip: Some(ip), error: None }),
-            Err(e) => emit(&ChildMsg::Done { ip: None, error: Some(e) }),
-        }
+        let error = if errors.is_empty() { "没有可用的回显服务".into() } else { errors.join("；") };
+        emit(&ChildMsg::Done { ip: None, error: Some(error), url: None });
     });
     0
+}
+
+async fn echo_once(route: &Route, url: &str, limit: Duration) -> Result<String, String> {
+    let (host, port, path) = net::split_https_url(url).ok_or("回显地址无效")?;
+    let opened = net::open(route, &host, port, limit).await?;
+    emit(&ChildMsg::Port { port: opened.local_port });
+    let mut tls = net::tls_handshake(opened.stream, &host, limit).await?;
+    let resp = net::http_get(&mut tls, &host, &path, limit).await?;
+    net::extract_ip(&resp.body).ok_or_else(|| format!("回显服务没有返回 IP（HTTP {}）", resp.status))
 }
 
 #[derive(Debug, Default)]
@@ -69,6 +74,8 @@ pub struct ProcProbeResult {
     pub ip: Option<String>,
     pub error: Option<String>,
     pub conn: Option<Conn>,
+    /// Echo service that answered.
+    pub url: Option<String>,
 }
 
 static COUNTER: AtomicU64 = AtomicU64::new(0);
@@ -138,7 +145,7 @@ pub async fn probe_process(process_name: &str, spec: &ChildSpec, engine: Option<
     let stdout = child.stdout.take();
     let run = async {
         let mut attrib: Option<tokio::task::JoinHandle<Option<Conn>>> = None;
-        let Some(stdout) = stdout else { return (None, Some("探针无输出".to_string()), attrib) };
+        let Some(stdout) = stdout else { return (None, Some("探针无输出".to_string()), None, attrib) };
         let mut lines = BufReader::new(stdout).lines();
         while let Ok(Some(line)) = lines.next_line().await {
             match serde_json::from_str::<ChildMsg>(&line) {
@@ -148,16 +155,18 @@ pub async fn probe_process(process_name: &str, spec: &ChildSpec, engine: Option<
                         attrib = Some(tokio::spawn(async move { e.find_by_port(port, Duration::from_millis(2500)).await }));
                     }
                 }
-                Ok(ChildMsg::Done { ip, error }) => return (ip, error, attrib),
+                Ok(ChildMsg::Done { ip, error, url }) => return (ip, error, url, attrib),
                 Err(_) => {}
             }
         }
-        (None, Some("探针提前退出".to_string()), attrib)
+        (None, Some("探针提前退出".to_string()), None, attrib)
     };
-    match tokio::time::timeout(limit + Duration::from_secs(3), run).await {
-        Ok((ip, error, attrib)) => {
+    let tries = spec.urls.len().max(1) as u32;
+    match tokio::time::timeout(limit * tries + Duration::from_secs(3), run).await {
+        Ok((ip, error, url, attrib)) => {
             res.ip = ip;
             res.error = error;
+            res.url = url;
             if let Some(h) = attrib {
                 res.conn = h.await.ok().flatten();
             }

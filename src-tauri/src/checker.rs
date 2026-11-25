@@ -304,7 +304,7 @@ struct Ctx {
     route: Route,
     engine: Option<Engine>,
     expected: String,
-    echo: Option<(String, bool)>,
+    echo: Vec<(String, bool)>,
     limit: Duration,
 }
 
@@ -356,13 +356,15 @@ async fn run_job(ctx: &Ctx, mut it: ItemResult, job: Job) -> ItemResult {
             it
         }
         Job::Process { name } => {
-            let Some((url, distinct)) = ctx.echo.clone() else {
+            if ctx.echo.is_empty() {
                 it.status = "warn".into();
                 it.note = "所有 IP 回显服务都不可用，无法做进程探测".into();
                 return it;
-            };
-            let spec = ChildSpec { route: ctx.route.clone(), url, timeout_ms: ctx.limit.as_millis() as u64 };
+            }
+            let urls: Vec<String> = ctx.echo.iter().take(3).map(|(u, _)| u.clone()).collect();
+            let spec = ChildSpec { route: ctx.route.clone(), urls, timeout_ms: ctx.limit.as_millis() as u64 };
             let r = probe::probe_process(&name, &spec, ctx.engine.as_ref(), ctx.limit).await;
+            let distinct = r.url.as_ref().and_then(|u| ctx.echo.iter().find(|(e, _)| e == u)).map(|(_, d)| *d).unwrap_or(false);
             apply_conn(&mut it, &r.conn);
             let proc_rule = r.conn.as_ref().map(|c| c.rule.to_lowercase().contains("process")).unwrap_or(false);
             let prefix = if it.note.is_empty() { String::new() } else { format!("{}；", it.note) };
@@ -373,7 +375,7 @@ async fn run_job(ctx: &Ctx, mut it: ItemResult, job: Job) -> ItemResult {
                     if ip != ctx.expected && it.source == "local" {
                         it.status = "warn".into();
                         it.note = format!(
-                            "{prefix}以该进程名发出的流量出口是 {ip}；它若联网会绕过目标出口，建议在代理软件里加 PROCESS-NAME,{name} 规则"
+                            "{prefix}该进程名没有专门的代理规则，它的流量只按目标地址分流：访问规则表里的域名仍走目标出口，访问其他地址时出口是 {ip}。若要整个进程都走目标出口，在代理软件里加 PROCESS-NAME,{name} 规则"
                         );
                     } else if ip != ctx.expected {
                         it.status = "fail".into();
@@ -463,20 +465,27 @@ pub(crate) fn resolve_route(mode: &str, env: &EnvReport) -> Result<Route, String
     }
 }
 
-async fn pick_echo(route: &Route, expected: &str) -> (Option<(String, bool)>, Option<String>) {
-    let mut fallback: Option<(String, String)> = None;
-    for url in ECHO_URLS {
-        let (_, resp) = net::https_get(route, url, Duration::from_secs(6)).await;
-        let Some(ip) = resp.ok().and_then(|r| net::extract_ip(&r.body)) else { continue };
-        if ip != expected {
-            return (Some((url.to_string(), true)), Some(ip));
+/// Returns the reachable echo services, those whose own egress differs from the
+/// target first (they can tell a process rule apart), plus the baseline IP.
+async fn pick_echo(route: &Route, expected: &str) -> (Vec<(String, bool)>, Option<String>) {
+    let mut set = tokio::task::JoinSet::new();
+    for (i, url) in ECHO_URLS.iter().enumerate() {
+        let route = route.clone();
+        set.spawn(async move {
+            let (_, resp) = net::https_get(&route, url, Duration::from_secs(6)).await;
+            (i, resp.ok().and_then(|r| net::extract_ip(&r.body)))
+        });
+    }
+    let mut found: Vec<(usize, String)> = Vec::new();
+    while let Some(r) = set.join_next().await {
+        if let Ok((i, Some(ip))) = r {
+            found.push((i, ip));
         }
-        fallback.get_or_insert((url.to_string(), ip));
     }
-    match fallback {
-        Some((u, ip)) => (Some((u, false)), Some(ip)),
-        None => (None, None),
-    }
+    found.sort_by_key(|(i, ip)| (*ip == expected, *i));
+    let baseline = found.first().map(|(_, ip)| ip.clone());
+    let echo = found.into_iter().map(|(i, ip)| (ECHO_URLS[i].to_string(), ip != expected)).collect();
+    (echo, baseline)
 }
 
 pub async fn run(cfg: AppConfig, db: ProviderDb, cancel: Arc<AtomicBool>, progress: ProgressFn) -> Result<Report, String> {
@@ -616,7 +625,7 @@ pub async fn run(cfg: AppConfig, db: ProviderDb, cancel: Arc<AtomicBool>, progre
         route: route.describe(),
         engine: engine.map(|e| format!("{} · {}", e.transport.describe(), e.version)),
         engine_error,
-        echo_url: echo.map(|(u, distinct)| if distinct { u } else { format!("{u}（与目标出口相同，无法区分）") }),
+        echo_url: echo.first().map(|(u, distinct)| if *distinct { u.clone() } else { format!("{u}（与目标出口相同，无法区分）") }),
         baseline_ip,
         env: env.checks,
         apps,
